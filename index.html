@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Escola e creche para cães em Jacarepaguá, Rio de Janeiro. Treinamos cães e ensinamos pessoas com amor e dedicação!">
+    <meta name="description" content="Creche e escola para cães em Jacarepaguá, RJ. Treinamos cães e ensinamos pessoas com amor e dedicação!">
+    <meta name="keywords" content="creche para cães, escola para cães, treinamento canino, Jacarepaguá, Rio de Janeiro">
+    <meta name="author" content="DevFerreiraG">
     <title>Casa dos Lobos Escola | Creche e Treinamento para Cães</title>
     <style>
         * {
@@ -29,6 +31,12 @@
             padding: 20px 0;
             z-index: 100;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
         }
 
         nav {
@@ -53,6 +61,11 @@
         .logo::before {
             content: '🐺';
             margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::before {
+            transform: rotate(20deg);
         }
 
         .nav-links a {
@@ -76,6 +89,12 @@
             background: url('https://via.placeholder.com/1920x1080.png?text=Casa+dos+Lobos+Cães') no-repeat center/cover;
             position: relative;
             color: #fff;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .hero::before {
@@ -106,6 +125,13 @@
         .hero h1::after {
             content: '🐶';
             margin-left: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
         .hero p {
@@ -154,6 +180,12 @@
             bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
+            animation: pawPulse 1.5s infinite;
+        }
+
+        @keyframes pawPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .services-grid, .gallery-grid {
@@ -170,6 +202,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .service-card::before {
@@ -221,46 +259,34 @@
             border-radius: 15px;
         }
 
-        .contact-form {
-            background: #fff;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 0 auto;
+        .whatsapp-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #fff, #f9f4e8);
+            text-align: center;
         }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 18px;
-            margin-bottom: 25px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #d4a017;
-            outline: none;
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: 18px;
-            background: #d4a017;
-            border: none;
+        .whatsapp-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: #25D366;
             color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .contact-form button:hover {
-            background: #b88c14;
-            transform: translateY(-3px);
+        .whatsapp-button:hover {
+            background: #20b956;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .whatsapp-button::before {
+            content: '📱';
+            margin-right: 10px;
         }
 
         footer {
@@ -322,6 +348,10 @@
             .dev-brand {
                 font-size: 50px;
             }
+            .whatsapp-button {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800&display=swap" rel="stylesheet">
@@ -334,7 +364,7 @@
                 <a href="#home">Home</a>
                 <a href="#servicos">Serviços</a>
                 <a href="#galeria">Galeria</a>
-                <a href="#contato">Contato</a>
+                <a href="#whatsapp">Contato</a>
             </div>
         </nav>
     </header>
@@ -342,7 +372,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Casa dos Lobos Escola</h1>
-            <p>Creche e treinamento para cães com amor e liberdade 🐾</p>
+            <p>Treinamos cães e ensinamos pessoas com amor 🐾</p>
             <a href="https://wa.me/5521988053792" target="_blank" class="cta-button">Fale pelo WhatsApp</a>
         </div>
     </section>
@@ -352,15 +382,15 @@
         <div class="services-grid">
             <div class="service-card">
                 <h3>Creche Diurna</h3>
-                <p>Um dia cheio de brincadeiras e socialização para todas as raças!</p>
+                <p>Brincadeiras e socialização para todas as raças em Jacarepaguá!</p>
             </div>
             <div class="service-card">
                 <h3>Treinamento</h3>
-                <p>Treinamos cães e ensinamos pessoas com técnicas modernas.</p>
+                <p>Aulas personalizadas para seu cão e dicas para você.</p>
             </div>
             <div class="service-card">
                 <h3>Hospedagem</h3>
-                <p>Conforto e cuidado em Pechincha, Jacarepaguá.</p>
+                <p>Conforto e cuidado 24h na Pechincha.</p>
             </div>
         </div>
     </section>
@@ -368,7 +398,6 @@
     <section id="galeria">
         <h2>Galeria</h2>
         <div class="gallery-grid">
-            <!-- Substitua pelos links reais do Instagram -->
             <div class="gallery-item">
                 <img src="https://via.placeholder.com/300x250.png?text=Cães+Brincando" alt="Cães brincando">
             </div>
@@ -381,15 +410,9 @@
         </div>
     </section>
 
-    <section id="contato">
-        <h2>Fale Conosco</h2>
-        <form class="contact-form" action="mailto:contato@casadoslobosescola.com.br" method="post" enctype="text/plain">
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="tel" name="telefone" placeholder="Telefone" required>
-            <textarea name="mensagem" rows="5" placeholder="Como podemos ajudar seu cãozinho? 🐶" required></textarea>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
+    <section class="whatsapp-section" id="whatsapp">
+        <h2>Entre em Contato</h2>
+        <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-button">Fale Conosco pelo WhatsApp</a>
     </section>
 
     <footer>
