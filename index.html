@@ -1,563 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creche e escola para cães em Jacarepaguá, RJ. Treinamos cães e ensinamos pessoas com amor e dedicação!">
-    <meta name="keywords" content="creche para cães, escola para cães, treinamento canino, Jacarepaguá, Rio de Janeiro, Casa dos Lobos">
-    <meta name="author" content="DevFerreiraG">
-    <meta name="robots" content="index, follow">
-    <title>Casa dos Lobos Escola | Creche e Treinamento para Cães</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        :root {
-            --primary-brown: #5C4033;
-            --light-beige: #F5E8D5;
-            --golden: #D4A017;
-            --dark-shadow: rgba(92, 64, 51, 0.2);
-            --light-shadow: rgba(245, 232, 213, 0.5);
-        }
-
-        body {
-            background: var(--light-beige);
-            color: var(--primary-brown);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 20px 0;
-            z-index: 100;
-            box-shadow: 0 4px 15px var(--dark-shadow);
-            transition: background 0.3s ease;
-        }
-
-        nav {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.1);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            margin-left: 40px;
-            text-decoration: none;
-            color: var(--primary-brown);
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--golden);
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: url('cao1.jpg') no-repeat center/cover; /* Usando a primeira foto como fundo */
-            position: relative;
-            color: #fff;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(92, 64, 51, 0.7), rgba(245, 232, 213, 0.3));
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 20px;
-        }
-
-        .hero-logo {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-        }
-
-        .hero-logo img {
-            height: 80px;
-            filter: drop-shadow(0 5px 15px var(--dark-shadow));
-            transition: transform 0.3s ease;
-        }
-
-        .hero-logo:hover img {
-            transform: scale(1.05);
-        }
-
-        .hero h1 {
-            font-size: 65px;
-            font-weight: 800;
-            margin-top: 100px;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 25px var(--dark-shadow);
-        }
-
-        .hero h1 span {
-            color: var(--golden);
-        }
-
-        .hero p {
-            font-size: 26px;
-            margin-bottom: 40px;
-            font-weight: 300;
-            text-shadow: 0 2px 10px var(--dark-shadow);
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 50px;
-            background: var(--golden);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px var(--dark-shadow);
-        }
-
-        .cta-button:hover {
-            background: #b88c14;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px var(--dark-shadow);
-        }
-
-        section {
-            padding: 100px 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
-
-        h2 {
-            font-size: 42px;
-            color: var(--primary-brown);
-            margin-bottom: 50px;
-            position: relative;
-            font-weight: 700;
-        }
-
-        h2::after {
-            content: '🐾';
-            position: absolute;
-            font-size: 30px;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--golden);
-            transition: transform 0.3s ease;
-        }
-
-        h2:hover::after {
-            transform: translateX(-50%) scale(1.2);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--light-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px var(--dark-shadow);
-        }
-
-        .service-card h3 {
-            color: var(--primary-brown);
-            font-size: 26px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .service-card p {
-            color: #555;
-            font-size: 16px;
-        }
-
-        .gallery-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, var(--light-beige), #fff);
-            position: relative;
-        }
-
-        .gallery-container {
-            max-width: 1000px;
-            margin: 60px auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-grid {
-            display: flex;
-            width: 200%; /* Ajustado para duas imagens por vez */
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item {
-            flex: 0 0 50%;
-            padding: 0 10px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px var(--light-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-controls {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .gallery-controls button {
-            padding: 10px 20px;
-            background: var(--golden);
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .gallery-controls button:hover {
-            background: #b88c14;
-        }
-
-        .whatsapp-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #fff, var(--light-beige));
-            text-align: center;
-            position: relative;
-        }
-
-        .whatsapp-button {
-            display: inline-block;
-            padding: 20px 60px;
-            background: #25D366;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-button:hover {
-            background: #20b956;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-        }
-
-        .whatsapp-button::before {
-            content: '📱';
-            margin-right: 10px;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        footer {
-            background: var(--primary-brown);
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 14px;
-            position: relative;
-        }
-
-        footer a {
-            color: var(--golden);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .dev-brand {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 80px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-dog {
-            display: inline-block;
-            font-size: 20px;
-            animation: wagTail 1s infinite;
-        }
-
-        @keyframes wagTail {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 45px;
-                margin-top: 80px;
-            }
-            .hero p {
-                font-size: 20px;
-            }
-            nav {
-                flex-direction: column;
-                padding: 10px 20px;
-            }
-            .nav-links {
-                margin-top: 10px;
-            }
-            .nav-links a {
-                margin: 10px 15px;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-grid {
-                width: 100%;
-                animation: none;
-            }
-            .gallery-item {
-                flex: 0 0 100%;
-            }
-            .dev-brand {
-                font-size: 50px;
-            }
-            .whatsapp-button {
-                padding: 15px 40px;
-                font-size: 18px;
-            }
-            .hero-logo img {
-                height: 60px;
-            }
-            .logo img {
-                height: 40px;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa dos Lobos - Galeria</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="logo-casa-dos-lobos.jpg" alt="Logo Casa dos Lobos Escola" onerror="this.src='https://via.placeholder.com/50?text=Logo'">
-            </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#whatsapp">Contato</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="hero" id="home">
-        <div class="hero-logo">
-            <img src="logo-casa-dos-lobos.jpg" alt="Logo Casa dos Lobos Escola" onerror="this.src='https://via.placeholder.com/80?text=Logo'">
-        </div>
-        <div class="hero-content">
-            <h1>Casa dos <span>Lobos</span> Escola</h1>
-            <p>Treinamos cães e ensinamos pessoas com amor e liberdade</p>
-            <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="cta-button">Fale pelo WhatsApp</a>
-        </div>
+  <header>
+    <h1>Casa dos Lobos - Galeria</h1>
+  </header>
+  
+  <main>
+    <section class="gallery">
+      <div class="gallery-item"><img src="cao1.jpg" alt="Cão 1"></div>
+      <div class="gallery-item"><img src="cao2.jpg" alt="Cão 2"></div>
+      <div class="gallery-item"><img src="cao3.jpg" alt="Cão 3"></div>
+      <div class="gallery-item"><img src="cao4.jpg" alt="Cão 4"></div>
+      <div class="gallery-item"><img src="cao5.jpg" alt="Cão 5"></div>
+      <div class="gallery-item"><img src="cao6.jpg" alt="Cão 6"></div>
     </section>
+  </main>
+  
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Imagem ampliada">
+  </div>
+  
+  <footer>
+    <p>Desenvolvido por FuturoDevJunior</p>
+  </footer>
+  
+  <script>
+    // Seleciona as imagens da galeria e os elementos do lightbox
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox .close');
 
-    <section id="servicos">
-        <h2>Nossos Serviços</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Creche Diurna</h3>
-                <p>Brincadeiras e socialização para todas as raças em Jacarepaguá!</p>
-            </div>
-            <div class="service-card">
-                <h3>Treinamento</h3>
-                <p>Aulas personalizadas para seu cão e dicas para você.</p>
-            </div>
-            <div class="service-card">
-                <h3>Hospedagem</h3>
-                <p>Conforto e cuidado 24h na Pechincha.</p>
-            </div>
-        </div>
-    </section>
+    // Ao clicar em uma imagem, abre o lightbox com a imagem ampliada
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = item.src;
+      });
+    });
 
-    <section class="gallery-section" id="galeria">
-        <h2>Galeria</h2>
-        <div class="gallery-container">
-            <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item">
-                    <img src="cao1.jpg" alt="Cães brincando na Casa dos Lobos">
-                </div>
-                <div class="gallery-item">
-                    <img src="cao2.jpg" alt="Treinamento na Casa dos Lobos">
-                </div>
-                <div class="gallery-item">
-                    <img src="cao3.jpg" alt="Área externa da Casa dos Lobos">
-                </div>
-            </div>
-            <div class="gallery-controls">
-                <button onclick="prevSlide()">◄</button>
-                <button onclick="nextSlide()">►</button>
-            </div>
-        </div>
-    </section>
+    // Fecha o lightbox ao clicar no botão de fechar
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
 
-    <section class="whatsapp-section" id="whatsapp">
-        <h2>Entre em Contato</h2>
-        <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-button">Fale Conosco pelo WhatsApp</a>
-    </section>
-
-    <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20e%20quero%20saber%20mais%20sobre%20os%20serviços!" target="_blank" class="whatsapp-float">📱</a>
-
-    <footer>
-        <div class="dev-brand">DevFerreiraG</div>
-        <div class="footer-content">
-            <p>Casa dos Lobos Escola © 2025 | Pechincha, Jacarepaguá - Rio de Janeiro<br>
-            <a href="https://wa.me/5521988053792" target="_blank">WhatsApp: (21) 98805-3792</a> | Siga-nos no <a href="https://www.instagram.com/escolacasadoslobos/" target="_blank">Instagram</a></p>
-            <p>Desenvolvido por <a href="https://linkedin.com/in/DevFerreiraG" target="_blank">DevFerreiraG</a> <span class="footer-dog">🐶</span></p>
-        </div>
-    </footer>
-
-    <script>
-        // Pegadas interativas (suavizadas)
-        let pawCount = 0;
-        document.addEventListener('mousemove', (e) => {
-            if (pawCount % 15 === 0) {
-                const paw = document.createElement('div');
-                paw.className = 'paw-trail';
-                paw.innerHTML = '🐾';
-                paw.style.left = `${e.pageX}px`;
-                paw.style.top = `${e.pageY}px`;
-                document.body.appendChild(paw);
-                setTimeout(() => paw.remove(), 600);
-            }
-            pawCount++;
-        });
-
-        // Controle do carrossel
-        let currentSlide = 0;
-        const galleryGrid = document.getElementById('galleryGrid');
-        const slideWidth = 50; // Porcentagem por slide (2 imagens visíveis)
-
-        function updateSlide() {
-            galleryGrid.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % 2; // 2 posições (0 e 1)
-            updateSlide();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + 2) % 2; // Volta circularmente
-            updateSlide();
-        }
-    </script>
+    // Fecha o lightbox ao clicar fora da imagem
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg && e.target !== closeBtn) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
