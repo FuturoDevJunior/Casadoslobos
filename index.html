@@ -15,11 +15,29 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        :root {
+            --primary-brown: #5C4033;
+            --light-beige: #F5E8D5;
+            --golden: #D4A017;
+            --dark-shadow: rgba(92, 64, 51, 0.2);
+            --light-shadow: rgba(245, 232, 213, 0.5);
+        }
+
         body {
-            background: #f9f4e8;
-            color: #3a2e1f;
+            background: var(--light-beige);
+            color: var(--primary-brown);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        .paw-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 20px;
+            color: var(--golden);
+            transition: all 0.1s ease;
         }
 
         header {
@@ -28,9 +46,9 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            padding: 20px 0;
+            padding: 15px 0;
             z-index: 100;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px var(--dark-shadow);
             animation: slideDown 0.5s ease-out;
         }
 
@@ -48,36 +66,27 @@
             padding: 0 30px;
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #6b4e31;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo::before {
-            content: '🐺';
-            margin-right: 10px;
+        .logo img {
+            height: 60px;
             transition: transform 0.3s ease;
         }
 
-        .logo:hover::before {
-            transform: rotate(20deg);
+        .logo:hover img {
+            transform: rotate(360deg) scale(1.1);
         }
 
         .nav-links a {
             margin-left: 40px;
             text-decoration: none;
-            color: #6b4e31;
+            color: var(--primary-brown);
             font-weight: 600;
-            transition: color 0.3s ease;
+            font-size: 16px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #d4a017;
+            color: var(--golden);
+            transform: translateY(-2px);
         }
 
         .hero {
@@ -87,14 +96,10 @@
             justify-content: center;
             text-align: center;
             background: url('https://via.placeholder.com/1920x1080.png?text=Casa+dos+Lobos+Cães') no-repeat center/cover;
+            background-attachment: fixed;
             position: relative;
             color: #fff;
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            overflow: hidden;
         }
 
         .hero::before {
@@ -104,7 +109,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(107, 78, 49, 0.6);
+            background: linear-gradient(135deg, rgba(92, 64, 51, 0.7), rgba(245, 232, 213, 0.3));
             z-index: 1;
         }
 
@@ -113,73 +118,103 @@
             z-index: 2;
             max-width: 900px;
             padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .hero-logo img {
+            height: 100px;
+            filter: drop-shadow(0 5px 15px var(--dark-shadow));
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero h1 {
-            font-size: 60px;
+            font-size: 70px;
             font-weight: 800;
+            margin-top: 120px;
             margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 5px 25px var(--dark-shadow);
         }
 
-        .hero h1::after {
-            content: '🐶';
-            margin-left: 10px;
+        .hero h1 span {
+            color: var(--golden);
+            display: inline-block;
             animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
         }
 
         .hero p {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 40px;
             font-weight: 300;
+            text-shadow: 0 2px 10px var(--dark-shadow);
         }
 
         .cta-button {
             display: inline-block;
-            padding: 18px 50px;
-            background: #d4a017;
+            padding: 20px 60px;
+            background: var(--golden);
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--dark-shadow);
         }
 
         .cta-button:hover {
             background: #b88c14;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px var(--dark-shadow);
         }
 
         section {
-            padding: 100px 20px;
+            padding: 120px 20px;
             max-width: 1300px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
         }
 
         h2 {
-            font-size: 42px;
-            color: #6b4e31;
+            font-size: 44px;
+            color: var(--primary-brown);
             margin-bottom: 50px;
             position: relative;
             font-weight: 700;
         }
 
         h2::after {
-            content: '🐾';
+            content: '🐾🐾';
             position: absolute;
-            font-size: 24px;
-            bottom: -25px;
+            font-size: 30px;
+            bottom: -35px;
             left: 50%;
             transform: translateX(-50%);
+            color: var(--golden);
             animation: pawPulse 1.5s infinite;
         }
 
@@ -188,7 +223,7 @@
             50% { opacity: 0.5; }
         }
 
-        .services-grid, .gallery-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
@@ -197,37 +232,38 @@
 
         .service-card {
             background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px var(--light-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            overflow: hidden;
         }
 
         .service-card::before {
-            content: '🐕';
+            content: '🐶';
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 30px;
-            color: #d4a017;
+            font-size: 40px;
+            color: var(--golden);
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.8;
         }
 
         .service-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px var(--dark-shadow);
         }
 
         .service-card h3 {
-            color: #6b4e31;
-            font-size: 26px;
+            color: var(--primary-brown);
+            font-size: 28px;
             margin-bottom: 20px;
             font-weight: 600;
         }
@@ -237,19 +273,35 @@
             font-size: 16px;
         }
 
+        .gallery-section {
+            padding: 120px 20px;
+            background: linear-gradient(135deg, var(--light-beige), #fff);
+            position: relative;
+        }
+
+        .gallery-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
         .gallery-grid {
-            gap: 20px;
+            display: flex;
+            width: 300%;
+            animation: carouselSlide 15s infinite linear;
+        }
+
+        @keyframes carouselSlide {
+            0% { transform: translateX(0); }
+            33.33% { transform: translateX(-33.33%); }
+            66.66% { transform: translateX(-66.66%); }
+            100% { transform: translateX(0); }
         }
 
         .gallery-item {
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
+            flex: 0 0 33.33%;
+            padding: 0 10px;
         }
 
         .gallery-item img {
@@ -257,12 +309,19 @@
             height: 250px;
             object-fit: cover;
             border-radius: 15px;
+            box-shadow: 0 5px 20px var(--light-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         .whatsapp-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #fff, #f9f4e8);
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #fff, var(--light-beige));
             text-align: center;
+            position: relative;
         }
 
         .whatsapp-button {
@@ -275,13 +334,13 @@
             font-weight: 700;
             font-size: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
 
         .whatsapp-button:hover {
             background: #20b956;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-button::before {
@@ -289,8 +348,31 @@
             margin-right: 10px;
         }
 
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         footer {
-            background: #6b4e31;
+            background: var(--primary-brown);
             color: #fff;
             padding: 40px 20px;
             text-align: center;
@@ -299,7 +381,7 @@
         }
 
         footer a {
-            color: #d4a017;
+            color: var(--golden);
             text-decoration: none;
             font-weight: 600;
         }
@@ -330,10 +412,10 @@
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 40px;
+                font-size: 45px;
             }
             .hero p {
-                font-size: 18px;
+                font-size: 20px;
             }
             nav {
                 flex-direction: column;
@@ -342,8 +424,15 @@
             .nav-links a {
                 margin: 10px 0;
             }
-            .services-grid, .gallery-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                width: 100%;
+                animation: none;
+            }
+            .gallery-item {
+                flex: 0 0 100%;
             }
             .dev-brand {
                 font-size: 50px;
@@ -352,6 +441,12 @@
                 padding: 15px 40px;
                 font-size: 18px;
             }
+            .hero-logo img {
+                height: 70px;
+            }
+            .logo img {
+                height: 40px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;800&display=swap" rel="stylesheet">
@@ -359,7 +454,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Casa dos Lobos</div>
+            <div class="logo">
+                <img src="https://www.save-free.com/cdn/https://instagram.fcai19-3.fna.fbcdn.net/v/t51.2885-19/377589140_316939924332893_2549473205894585315_n.jpg?_nc_ht=instagram.fcai19-3.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2AFZ2zsBf-8hv8VmWUPNM4j2wicD6HjS2pHb3mdvty0goVhUrU4z54a1Gx1d0kqUYsk&_nc_ohc=t-XROjNqEDEQ7kNvgGcGAOm&_nc_gid=c6fc7833fcae48e48f60a656de59fde7&edm=AEF8tYYBAAAA&ccb=7-5&oh=00_AYBQMZaZBNpJsoR12SODf58LvtwJS6lVN2M5ESdx_sD8Og&oe=67BEBF72&_nc_sid=1e20d2" alt="Logo Casa dos Lobos">
+            </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#servicos">Serviços</a>
@@ -370,14 +467,18 @@
     </header>
 
     <section class="hero" id="home">
+        <div class="hero-logo">
+            <img src="https://www.save-free.com/cdn/https://instagram.fcai19-3.fna.fbcdn.net/v/t51.2885-19/377589140_316939924332893_2549473205894585315_n.jpg?_nc_ht=instagram.fcai19-3.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2AFZ2zsBf-8hv8VmWUPNM4j2wicD6HjS2pHb3mdvty0goVhUrU4z54a1Gx1d0kqUYsk&_nc_ohc=t-XROjNqEDEQ7kNvgGcGAOm&_nc_gid=c6fc7833fcae48e48f60a656de59fde7&edm=AEF8tYYBAAAA&ccb=7-5&oh=00_AYBQMZaZBNpJsoR12SODf58LvtwJS6lVN2M5ESdx_sD8Og&oe=67BEBF72&_nc_sid=1e20d2" alt="Logo Casa dos Lobos">
+        </div>
         <div class="hero-content">
-            <h1>Casa dos Lobos Escola</h1>
-            <p>Treinamos cães e ensinamos pessoas com amor 🐾</p>
-            <a href="https://wa.me/5521988053792" target="_blank" class="cta-button">Fale pelo WhatsApp</a>
+            <h1>Casa dos <span>Lobos</span> Escola</h1>
+            <p>Treinamos cães e ensinamos pessoas com amor e liberdade</p>
+            <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="cta-button">Fale pelo WhatsApp</a>
         </div>
     </section>
 
     <section id="servicos">
+        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Nossos Serviços</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -395,25 +496,31 @@
         </div>
     </section>
 
-    <section id="galeria">
+    <section class="gallery-section" id="galeria">
+        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Galeria</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x250.png?text=Cães+Brincando" alt="Cães brincando">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x250.png?text=Treinamento" alt="Treinamento">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x250.png?text=Área+Externa" alt="Área externa">
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x250.png?text=Cães+Brincando" alt="Cães brincando">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x250.png?text=Treinamento" alt="Treinamento">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x250.png?text=Área+Externa" alt="Área externa">
+                </div>
             </div>
         </div>
     </section>
 
     <section class="whatsapp-section" id="whatsapp">
+        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Entre em Contato</h2>
-        <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-button">Fale Conosco pelo WhatsApp</a>
+        <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-button">Fale Conosco pelo WhatsApp</a>
     </section>
+
+    <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20e%20quero%20saber%20mais%20sobre%20os%20serviços!" target="_blank" class="whatsapp-float">📱</a>
 
     <footer>
         <div class="dev-brand">DevFerreiraG</div>
@@ -423,5 +530,22 @@
             <p>Desenvolvido por <a href="https://linkedin.com/in/DevFerreiraG" target="_blank">DevFerreiraG</a></p>
         </div>
     </footer>
+
+    <script>
+        // Pegadas interativas
+        let pawCount = 0;
+        document.addEventListener('mousemove', (e) => {
+            if (pawCount % 5 === 0) {
+                const paw = document.createElement('div');
+                paw.className = 'paw-trail';
+                paw.innerHTML = '🐾';
+                paw.style.left = `${e.pageX}px`;
+                paw.style.top = `${e.pageY}px`;
+                document.body.appendChild(paw);
+                setTimeout(() => paw.remove(), 1000);
+            }
+            pawCount++;
+        });
+    </script>
 </body>
 </html>
