@@ -46,15 +46,9 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            padding: 15px 0;
+            padding: 20px 0;
             z-index: 100;
             box-shadow: 0 4px 15px var(--dark-shadow);
-            animation: slideDown 0.5s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
         }
 
         nav {
@@ -66,13 +60,24 @@
             padding: 0 30px;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
         .logo img {
-            height: 60px;
+            height: 50px;
             transition: transform 0.3s ease;
+            object-fit: contain;
         }
 
         .logo:hover img {
-            transform: rotate(360deg) scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links a {
@@ -81,12 +86,11 @@
             color: var(--primary-brown);
             font-weight: 600;
             font-size: 16px;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--golden);
-            transform: translateY(-2px);
         }
 
         .hero {
@@ -96,7 +100,6 @@
             justify-content: center;
             text-align: center;
             background: url('https://via.placeholder.com/1920x1080.png?text=Casa+dos+Lobos+Cães') no-repeat center/cover;
-            background-attachment: fixed;
             position: relative;
             color: #fff;
             overflow: hidden;
@@ -117,25 +120,19 @@
             position: relative;
             z-index: 2;
             max-width: 900px;
-            padding: 0 20px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            padding: 20px;
         }
 
         .hero-logo {
             position: absolute;
-            top: 30px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
         }
 
         .hero-logo img {
-            height: 100px;
+            height: 80px;
             filter: drop-shadow(0 5px 15px var(--dark-shadow));
             animation: float 3s infinite ease-in-out;
         }
@@ -146,27 +143,19 @@
         }
 
         .hero h1 {
-            font-size: 70px;
+            font-size: 65px;
             font-weight: 800;
-            margin-top: 120px;
+            margin-top: 100px;
             margin-bottom: 20px;
             text-shadow: 0 5px 25px var(--dark-shadow);
         }
 
         .hero h1 span {
             color: var(--golden);
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
         }
 
         .hero p {
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 40px;
             font-weight: 300;
             text-shadow: 0 2px 10px var(--dark-shadow);
@@ -174,25 +163,25 @@
 
         .cta-button {
             display: inline-block;
-            padding: 20px 60px;
+            padding: 18px 50px;
             background: var(--golden);
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 18px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px var(--dark-shadow);
         }
 
         .cta-button:hover {
             background: #b88c14;
-            transform: scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px var(--dark-shadow);
         }
 
         section {
-            padding: 120px 20px;
+            padding: 100px 20px;
             max-width: 1300px;
             margin: 0 auto;
             text-align: center;
@@ -200,7 +189,7 @@
         }
 
         h2 {
-            font-size: 44px;
+            font-size: 42px;
             color: var(--primary-brown);
             margin-bottom: 50px;
             position: relative;
@@ -208,62 +197,39 @@
         }
 
         h2::after {
-            content: '🐾🐾';
+            content: '🐾';
             position: absolute;
             font-size: 30px;
-            bottom: -35px;
+            bottom: -30px;
             left: 50%;
             transform: translateX(-50%);
             color: var(--golden);
-            animation: pawPulse 1.5s infinite;
-        }
-
-        @keyframes pawPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 60px;
         }
 
         .service-card {
             background: #fff;
-            padding: 35px;
-            border-radius: 25px;
+            padding: 30px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px var(--light-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '🐶';
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 40px;
-            color: var(--golden);
-            opacity: 0.2;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            opacity: 0.8;
         }
 
         .service-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: 0 15px 40px var(--dark-shadow);
         }
 
         .service-card h3 {
             color: var(--primary-brown);
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 20px;
             font-weight: 600;
         }
@@ -274,7 +240,7 @@
         }
 
         .gallery-section {
-            padding: 120px 20px;
+            padding: 100px 20px;
             background: linear-gradient(135deg, var(--light-beige), #fff);
             position: relative;
         }
@@ -318,7 +284,7 @@
         }
 
         .whatsapp-section {
-            padding: 120px 20px;
+            padding: 100px 20px;
             background: linear-gradient(135deg, #fff, var(--light-beige));
             text-align: center;
             position: relative;
@@ -339,7 +305,7 @@
 
         .whatsapp-button:hover {
             background: #20b956;
-            transform: scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
 
@@ -413,6 +379,7 @@
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 45px;
+                margin-top: 80px;
             }
             .hero p {
                 font-size: 20px;
@@ -421,8 +388,11 @@
                 flex-direction: column;
                 padding: 10px 20px;
             }
+            .nav-links {
+                margin-top: 10px;
+            }
             .nav-links a {
-                margin: 10px 0;
+                margin: 10px 15px;
             }
             .services-grid {
                 grid-template-columns: 1fr;
@@ -442,7 +412,7 @@
                 font-size: 18px;
             }
             .hero-logo img {
-                height: 70px;
+                height: 60px;
             }
             .logo img {
                 height: 40px;
@@ -455,7 +425,8 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="https://www.save-free.com/cdn/https://instagram.fcai19-3.fna.fbcdn.net/v/t51.2885-19/377589140_316939924332893_2549473205894585315_n.jpg?_nc_ht=instagram.fcai19-3.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2AFZ2zsBf-8hv8VmWUPNM4j2wicD6HjS2pHb3mdvty0goVhUrU4z54a1Gx1d0kqUYsk&_nc_ohc=t-XROjNqEDEQ7kNvgGcGAOm&_nc_gid=c6fc7833fcae48e48f60a656de59fde7&edm=AEF8tYYBAAAA&ccb=7-5&oh=00_AYBQMZaZBNpJsoR12SODf58LvtwJS6lVN2M5ESdx_sD8Og&oe=67BEBF72&_nc_sid=1e20d2" alt="Logo Casa dos Lobos">
+                <!-- Use o caminho local após upload -->
+                <img src="logo-casa-dos-lobos.jpg" alt="Logo Casa dos Lobos">
             </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
@@ -468,7 +439,8 @@
 
     <section class="hero" id="home">
         <div class="hero-logo">
-            <img src="https://www.save-free.com/cdn/https://instagram.fcai19-3.fna.fbcdn.net/v/t51.2885-19/377589140_316939924332893_2549473205894585315_n.jpg?_nc_ht=instagram.fcai19-3.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2AFZ2zsBf-8hv8VmWUPNM4j2wicD6HjS2pHb3mdvty0goVhUrU4z54a1Gx1d0kqUYsk&_nc_ohc=t-XROjNqEDEQ7kNvgGcGAOm&_nc_gid=c6fc7833fcae48e48f60a656de59fde7&edm=AEF8tYYBAAAA&ccb=7-5&oh=00_AYBQMZaZBNpJsoR12SODf58LvtwJS6lVN2M5ESdx_sD8Og&oe=67BEBF72&_nc_sid=1e20d2" alt="Logo Casa dos Lobos">
+            <!-- Use o caminho local após upload -->
+            <img src="logo-casa-dos-lobos.jpg" alt="Logo Casa dos Lobos">
         </div>
         <div class="hero-content">
             <h1>Casa dos <span>Lobos</span> Escola</h1>
@@ -478,7 +450,6 @@
     </section>
 
     <section id="servicos">
-        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Nossos Serviços</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -497,7 +468,6 @@
     </section>
 
     <section class="gallery-section" id="galeria">
-        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Galeria</h2>
         <div class="gallery-container">
             <div class="gallery-grid">
@@ -515,7 +485,6 @@
     </section>
 
     <section class="whatsapp-section" id="whatsapp">
-        <div class="paw-transition">🐾🐾🐾</div>
         <h2>Entre em Contato</h2>
         <a href="https://wa.me/5521988053792?text=Olá%20Casa%20dos%20Lobos!%20Vi%20o%20site%20de%20vocês%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20para%20meu%20cãozinho.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-button">Fale Conosco pelo WhatsApp</a>
     </section>
@@ -532,17 +501,17 @@
     </footer>
 
     <script>
-        // Pegadas interativas
+        // Pegadas interativas (mantidas, mas suavizadas)
         let pawCount = 0;
         document.addEventListener('mousemove', (e) => {
-            if (pawCount % 5 === 0) {
+            if (pawCount % 10 === 0) { // Reduzido para menos pegadas
                 const paw = document.createElement('div');
                 paw.className = 'paw-trail';
                 paw.innerHTML = '🐾';
                 paw.style.left = `${e.pageX}px`;
                 paw.style.top = `${e.pageY}px`;
                 document.body.appendChild(paw);
-                setTimeout(() => paw.remove(), 1000);
+                setTimeout(() => paw.remove(), 800);
             }
             pawCount++;
         });
