@@ -335,12 +335,4 @@ function App() {
   );
 }
 
-export default App;[build]
-  command = "npm run build"
-  publish = "dist"
-  base = "."
-
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
+export default App;
