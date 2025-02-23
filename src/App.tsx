@@ -11,7 +11,7 @@ function App() {
       <div 
         className="h-screen relative bg-cover bg-center"
         style={{
-          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/src/assets/images/hero-bg.webp")'
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/hero-bg.webp")'
         }}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
@@ -335,4 +335,12 @@ function App() {
   );
 }
 
-export default App;
+export default App;[build]
+  command = "npm run build"
+  publish = "dist"
+  base = "."
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
